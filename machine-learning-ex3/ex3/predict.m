@@ -22,9 +22,14 @@ p = zeros(size(X, 1), 1);
 %
 
 
+z2 = [zeros(m, 1) X] * Theta1';
+a2 = 1 ./ (1 + exp(-z2));
 
+m2 = size(a2, 1) + 1;
+z3 = [zeros(m, 1) a2] * Theta2';
+a3 = 1 ./ (1 + exp(-z3));
 
-
+[max_value, p] = max(a3, [], 2);
 
 
 

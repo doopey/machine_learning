@@ -37,9 +37,10 @@ grad = zeros(size(theta));
 %
 
 
-
-
-
+h = 1 ./ (1 + exp(-X * theta));
+theta_tmp = [0; theta(2:end, :)];
+J = (-y' * log(h) - (1 - y') * log(1 - h)) / m + (theta_tmp' * theta_tmp) .* lambda / 2 / m;
+grad = (X' * (h - y)) / m + theta_tmp * lambda / m;
 
 
 
